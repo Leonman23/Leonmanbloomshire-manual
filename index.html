@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Bloomshire Founders' Field Manual</title>
+<style>
+:root{--bg:#f3f7f5;--card:#fff;--ink:#12343b;--mute:#566b6e;--line:#d3e0dc;--leaf:#2f7a54;--gold:#c98f1e;--soft:#e4efe9;--warn:#fff2d2;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1f23;--card:#162d32;--ink:#e6f1ee;--mute:#9db5b3;--line:#27474d;--leaf:#5fc08a;--gold:#e5b24a;--soft:#1d3a3f;--warn:#3a3118}}
+:root[data-theme="dark"]{--bg:#0e1f23;--card:#162d32;--ink:#e6f1ee;--mute:#9db5b3;--line:#27474d;--leaf:#5fc08a;--gold:#e5b24a;--soft:#1d3a3f;--warn:#3a3118}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 "Trebuchet MS",Verdana,sans-serif}
+h1,h2,h3{font-family:Georgia,"Times New Roman",serif;line-height:1.2;margin:0}
+.wrap{max-width:860px;margin:0 auto;padding:20px 16px 60px}
+header h1{font-size:clamp(28px,6vw,42px)}header p{color:var(--mute);margin:6px 0 16px;max-width:60ch}
+.field{display:grid;grid-template-columns:repeat(9,1fr);gap:6px;margin:14px 0 8px}
+.plot{aspect-ratio:1;border-radius:6px;border:2px solid var(--line);background:var(--soft);color:var(--mute);font-weight:700;font-size:13px;cursor:pointer;padding:0;transition:background .3s,border-color .3s}
+.plot.part{border-color:var(--gold)}.plot.done{background:var(--leaf);border-color:var(--leaf);color:#fff}
+.plot:focus-visible,.tab:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.stat{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;font-size:14px;color:var(--mute)}
+.bar{height:8px;background:var(--soft);border-radius:4px;overflow:hidden;margin:6px 0 4px}.bar i{display:block;height:100%;width:0;background:var(--leaf);transition:width .3s}
+nav{display:flex;gap:6px;overflow-x:auto;margin:22px 0 14px;border-bottom:2px solid var(--line)}
+.tab{background:none;border:0;border-bottom:3px solid transparent;color:var(--mute);font:inherit;font-weight:700;padding:10px 12px;cursor:pointer;white-space:nowrap;margin-bottom:-2px}
+.tab[aria-selected=true]{color:var(--ink);border-color:var(--gold)}
+section[hidden]{display:none}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:0 0 10px}
+summary{cursor:pointer;padding:12px 14px;display:flex;gap:10px;align-items:center;font-weight:700;list-style:none}
+summary::-webkit-details-marker{display:none}
+summary small{margin-left:auto;color:var(--mute);font-weight:400;text-align:right}
+.mk{width:22px;height:22px;border-radius:50%;background:var(--soft);flex:none;display:grid;place-items:center;font-size:12px}
+details.done .mk{background:var(--leaf);color:#fff}
+.body{padding:2px 14px 14px;border-top:1px solid var(--line)}
+label.t{display:flex;gap:10px;padding:7px 0;cursor:pointer;align-items:flex-start}
+label.t input{margin-top:5px;accent-color:var(--leaf);width:18px;height:18px;flex:none}
+label.t input:checked+span{color:var(--mute);text-decoration:line-through}
+.tip{background:var(--warn);border-left:4px solid var(--gold);padding:8px 12px;border-radius:0 8px 8px 0;font-size:14.5px;margin-top:8px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px;margin-bottom:14px}
+.card h2{font-size:20px;margin-bottom:8px}.card h3{font-size:16px;margin:12px 0 4px}
+.row{display:flex;gap:12px;flex-wrap:wrap;align-items:end;margin:8px 0}
+.row label{display:flex;flex-direction:column;font-size:13px;color:var(--mute);gap:3px;flex:1;min-width:120px}
+input[type=number],select{font:inherit;padding:8px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);width:100%}
+.out{font-size:18px;font-weight:700;margin-top:6px}.out span{color:var(--leaf)}
+.scroll{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:14.5px;min-width:360px}
+th,td{text-align:left;padding:7px 8px;border-bottom:1px solid var(--line)}th{color:var(--mute);font-weight:700}
+.neg{color:#c0392b}.pos{color:var(--leaf)}ol,ul{padding-left:22px;margin:6px 0}li{margin:5px 0}
+.tbtn{float:right;background:none;border:1px solid var(--line);color:var(--mute);border-radius:8px;padding:6px 10px;font:inherit;font-size:13px;cursor:pointer}
+@media(max-width:560px){.field{grid-template-columns:repeat(6,1fr)}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style></head><body><div class="wrap">
+<header>
+<button class="tbtn" id="theme" type="button">Switch theme</button>
+<h1>Bloomshire Founders' Field Manual</h1>
+<p>Your route through the 18-chapter Founding Farmers quest. Tick tasks as you finish them; each plot below turns green when its chapter is done.</p>
+<div class="field" id="field" role="list"></div>
+<div class="bar"><i id="pb"></i></div>
+<div class="stat"><span id="ps">0 of 18 chapters done</span><button type="button" id="reset" class="tbtn" style="float:none">Clear progress</button></div>
+</header>
+<nav role="tablist" id="tabs"></nav>
+
+<section id="s-ch"></section>
+
+<section id="s-route" hidden>
+<div class="card"><h2>The quest in twelve moves</h2><ol>
+<li><b>Fish from minute one.</b> A cast costs 1 energy, a fish pays back more. You are also hunting the Golden Fish for chapter 15 (about 1 cast in 33, town river or home island only). Never fry or sell it.</li>
+<li><b>Fry every common fish.</b> It is your fuel all game.</li>
+<li><b>Plant early.</b> Only harvests give Farming XP.</li>
+<li><b>Clear chapters 1-7.</b> Mostly walking and reading. Chapter 6 needs night (9 PM game time).</li>
+<li><b>Finish crop tasks 1-7 and reach Farming 5</b> before chapter 8: grow about 5 spare Cabbage.</li>
+<li><b>Stonepeak:</b> loot the shift boss's chest first (Bronze pickaxe), then mine 29 copper: 14 for Dunn, 15 for Bram.</li>
+<li><b>Buy Dunn's 25 Stone</b> in town instead of mining it.</li>
+<li><b>Green Vein:</b> prospector's chest gives a Gold pickaxe and 2 Emeralds. Break 3 seams, grab Haskett's Note.</li>
+<li><b>Raise 15,000 Gold for Bram:</b> sell loot, then fish, then crops. Mine last.</li>
+<li><b>The Gloom:</b> fit the lever handle, mine 2 Rubies, open the red-deep chest.</li>
+<li><b>Sunken Vault:</b> Amethyst rod and pickaxe; mine 1 Gold Ore.</li>
+<li><b>Act III:</b> plant bean and eggplant tasks at once, sow Star Fruit at Farming 10, fish Ghost Catfish after dark.</li></ol></div>
+<div class="card"><h2>Energy basics</h2><ul>
+<li>Bar: 100 (150 for NFT holders). It never refills on its own.</li>
+<li>Bed: full refill after 1 hour, usable every 12 hours (6 for holders), counted from when you lie down. It heals you fully any time.</li>
+<li>Cooked food restores energy with no daily cap; raw food restores none. Cooking is free.</li>
+<li>Free: walking, talking, reading, puzzles, chests, hoeing, watering, cooking.</li>
+<li>Costs: sow 1, harvest 1, axe 1, cast 1, ore blow 2, combat 1 per 3 hits.</li></ul>
+<div class="scroll"><table><tr><th>Dish</th><th>Made from</th><th>Energy</th><th>Health</th></tr>
+<tr><td>Hearty Stew</td><td>fish + Potato + Onion</td><td>22</td><td>+44</td></tr>
+<tr><td>Fried Fish</td><td>1 fish</td><td>5</td><td>+10</td></tr>
+<tr><td>Bread</td><td>2 Wheat</td><td>4</td><td>+8</td></tr>
+<tr><td>Vegetable Plate</td><td>any 2 crops</td><td>2</td><td>+4</td></tr></table></div></div>
+</section>
+
+<section id="s-calc" hidden>
+<div class="card"><h2>Fishing energy</h2>
+<div class="row"><label>Casts<input type="number" id="f1" value="40" min="0"></label><label>Bites that land (%)<input type="number" id="f2" value="40" min="0" max="100"></label></div>
+<div class="out" id="fo"></div><p style="color:var(--mute);font-size:14px;margin:4px 0 0">Each landed fish fried returns 5 energy. Above 20% you gain energy.</p></div>
+<div class="card"><h2>Mining energy</h2>
+<div class="row"><label>Ore<select id="m1"><option value="6,8">Copper / Quartz</option><option value="8,10">Topaz / Sapphire / Moonstone</option><option value="10,12">Emerald / Amethyst / Ruby</option><option value="12,14">Gold Ore / Diamond</option></select></label><label>Ore needed<input type="number" id="m2" value="14" min="1"></label></div>
+<div class="out" id="mo"></div><p style="color:var(--mute);font-size:14px;margin:4px 0 0">Doubles give 2 ore for one extra blow, so break them first. For quests that count rocks, break singles.</p></div>
+<div class="card"><h2>Gold for Bram</h2>
+<div class="row"><label>Gold you have now<input type="number" id="g1" value="0" min="0"></label></div>
+<div class="out" id="go"></div>
+<h3>Never sell</h3><ul><li>Golden Fish, Ghost Catfish</li><li>5 Wheat, 5 Cabbage, 5 Corn, 2 Rubies, 2 Silvercap</li><li>Star Fruit seeds and every quest item</li><li>3 Emeralds, 15 Copper, 5 Gold Ore until Bram has them</li></ul>
+<p style="color:var(--mute);font-size:14px">Skip Sell All. Safe once you have spares: Diamond, extra Emeralds and Gold Ore, Amethyst, Quartz, Rice and other crops.</p></div>
+</section>
+
+<section id="s-farm" hidden>
+<div class="card"><h2>Crop tasks</h2>
+<p>A task counts only the crop it names, and each crop gives a single harvest. One harvest counts toward every open task that names it. Seeds: Hazel's shop; Marigold and Sunflower at Juniper's.</p>
+<div class="scroll"><table><tr><th>Chapters</th><th>Crops (amount)</th><th>Due before</th></tr>
+<tr><td>1-7</td><td>Parsnip 6, Spring Onion 6, Wheat 6, Potato 6, Cabbage 6, Onion 8, Wheat 8</td><td>Ch 8</td></tr>
+<tr><td>8-14</td><td>Rice 8, Broccoli 6, Marigold 6, Corn 6, Sunflower 6, Tomato 6, Cucumber 8</td><td>Ch 15</td></tr>
+<tr><td>15-17</td><td>Green Beans 10, Adzuki Bean 10, Eggplant 10</td><td>Ch 18</td></tr></table></div>
+<h3>XP needed</h3><p>Level 5: 557. Level 6: 851. Level 7: 1,204. Level 8: 1,613. Level 9: 2,079. Level 10: 2,601. The 17 tasks total about 2,600 XP, but Act I leaves you 60-85 XP short of level 5.</p>
+<h3>Star Fruit</h3><p>Sow at Farming 10. It takes 5 hours: the timer shows 4, then a second watering unlocks the last hour. Marven also wants 5 Wheat, 5 Cabbage and 5 Corn that you grew.</p></div>
+<div class="card"><h2>Crops that lose Gold</h2>
+<div class="scroll"><table><tr><th>Crop</th><th>Seed</th><th>Sells</th><th>Each</th></tr>
+<tr><td>Corn, Cucumber</td><td>~615</td><td>~490</td><td class="neg">-125</td></tr>
+<tr><td>Tomato, Adzuki Bean</td><td>~680</td><td>~545</td><td class="neg">-135</td></tr>
+<tr><td>Green Beans</td><td>~755</td><td>~605</td><td class="neg">-150</td></tr>
+<tr><td>Eggplant</td><td>~925</td><td>~740</td><td class="neg">-185</td></tr>
+<tr><td>Wheat</td><td>~95</td><td>~185</td><td class="pos">+90</td></tr>
+<tr><td>Cabbage, Marigold</td><td>~120</td><td>~240</td><td class="pos">+120</td></tr>
+<tr><td>Rice, Broccoli</td><td>~180</td><td>~355</td><td class="pos">+175</td></tr></table></div>
+<p>Grow only what a task or Marven asks for.</p></div>
+<div class="card"><h2>Shards from crops</h2><ul>
+<li>A rare-crop harvest drops 1-2 Shards about 1 time in 8. Fish: 1 in 20. Ore, trees, foraging: 1 in 25.</li>
+<li>Rare means seeds that unlock at Farming 10+, plus Saffron and Star Fruit.</li>
+<li>Best pick: Sweet Potato (level 10, 70 min, seed ~435, sells ~870).</li>
+<li>Lucky drops cap at 30 Shards a day, resetting 00:00 UTC.</li></ul></div>
+</section>
+
+<p style="color:var(--mute);font-size:13px;margin-top:24px">Numbers come from the game's client code as of 3 Oct 2026. The game is in beta, so confirm key figures in play.</p>
+</div>
+<script>
+var CH=[
+["A Strange Find","0 energy",["Talk to Maren (west bank, north of the bridge)","Find the grey plank in the grass at the water's edge below her house","Show Maren the mark"],"Walk the shoreline and watch for the E prompt."],
+["The Fisherman's Memory","3-10 energy",["Go south along the east bank to Wren's cottage","Catch 1 Chub, 1 Perch, 1 Sunfish (hold Space, release to cast, tap in the green)","Bring Wren the fish and driftwood: 150 Gold"],"Extra fish can be sold or fried."],
+["The Trailhead","0 energy",["Walk west over the bridge into Whisperwood","Read the post with the birdhouse by the lodge","Open the chest at the far-west campfire: Hunter's Journal"],"The chest stays shut until the post is read."],
+["The Moonstone Circle","0 energy",["Read both books (stones 1-3 and 4-6)","Touch the six beast stones in your own riddle order","Search the middle crystal: Old Token, 2 Star Fruit seeds"],"Order is random per player. Top row: boar, heron, fox. Bottom: hare, stag, owl. A wrong touch locks 10 min. Keep the seeds safe."],
+["Clear Eyes","0 energy",["Find the cut stump in Mushroom Hollow, then ask Juniper","Pick 3 Silvercap and 1 Glowcap","Hand them to Juniper: Clearsight Tonic, 250 Gold"],"Closest patch: bottom-right corner inside Whisperwood. Patches regrow in 30 min."],
+["Mirror Pond","0 energy, night only",["Wait until 9 PM game time","Follow the stream north from the middle bridge and use the tonic","Swim into the grotto, search the top-right ledge: Mirror Charm"],"By day the pond only shows sky; the tonic is not wasted."],
+["The Forgotten Shrine","0 energy",["Take the south path from the crossroads to the weeping angel","Token in the round hollow, charm in the other: Map Piece I","Tell Maren: 400 Gold"],"Crop tasks 1-7 must be done before chapter 8 opens."],
+["The Miners' Camp","40-80 energy",["Read both notices, speak to Dunn","Old Working lower level: open the shift boss's chest","Find the Lucky Pick (bottom-left corner)","Mine 14 copper (doubles first); 15 more for Bram later","Buy 25 Stone, deliver everything: 800 Gold"],"Only singles left? Wait 20 min for doubles, or trade 4 Wood for 5 Stone at the Exchange."],
+["Haskett's Strongbox","0 energy",["Ask Dunn about his pick","Read four digits: jetty planks, cairn top stone, company board, graves under TAM","Dial them into the strongbox: 800 Gold"],"Three wrong tries jam it for 15 min. Codes differ per player."],
+["The Green Vein","~30 energy",["Open the prospector's chest (top-right): Gold pickaxe, 2 Emeralds","Break 3 emerald seams (singles are cheaper)","Take Haskett's Note by the green pool: 1,000 Gold"],"Chests are spots you stand on; look for the Open prompt."],
+["The Lever Handle","60-90 energy",["Raise 15,000 Gold","Bring Bram 3 Emeralds, 15 Copper, the Gold and Haskett's Note"],"Sell loot first, then fish, then crops. Mining is last."],
+["The Lever in the Dark","0 energy (+20 rubies)",["Gloom floor 1: top-right stairs. Floor 2: bottom-right stairs","Floor 3: follow the right wall to the lever behind a rock","Mine 2 Rubies, open the red-deep chest"],"Stay on the right wall to dodge the Bone Spider."],
+["The Last Cart","0 energy",["Read the quarry loading log (5 carts)","Read the compound gate book (4 carts)","Search the Delvers' Court statue with the missing number: Delvers' Key"],"A wrong search locks the court 30 min. Write both lists down."],
+["The Sunken Vault","~12 energy",["Enter via the High Shelf door, take the stairs down","Open the strongbox: Amethyst rod, 4 Gold Ore, Diamond","Search the bottom-right shelf: Record, Map Piece II","Mine 1 Gold Ore near the stairs"],"Vault Queen hits for 30. Hug the bottom wall and avoid her."],
+["Two More Pieces","0 energy with Golden Fish",["Show Maren the Delvers' Record","Give Nixie a Golden Fish: Map Piece III","Old Cave: Map Piece IV (top-left corner) and the drowned chest","Bring Maren all 4 pieces: Founders' Map"],"Budget 30-40 casts for the Golden Fish. Fry the commons."],
+["The Founders' Map","~0 energy, 5,000 Gold",["Press Space on the map to see your X","Dig at your spot with the map in your bag","Bram sells the Pry Bar: 5 Gold Ore + 5,000 Gold","Open the chest: Letter, Seal"],"Wrong dig locks digging 20 min. If E does nothing, refresh."],
+["The Lake Remembers","0 energy",["Look at any 3 of 5: bottle, stump, Tide Stone, sunken boat, houseboat","Find Marven up the stairs, north-west shelf"],"Fast trio: bottle, glowing stump, Tide Stone."],
+["Marven's Request","~45 energy",["Grow a Star Fruit (Farming 10)","Catch 2 Ghost Catfish at night (about 1 cast in 5)","Cook Moonlight Stew: Catfish + Star Fruit + 2 Silvercap","Grow 5 Wheat, 5 Cabbage, 5 Corn","Bring 2 Rubies, the Seal and the Moon Pearl"],"The Moon Pearl only appears after Marven asks. Chapter 18 needs no Gold."]];
+var S={};try{S=JSON.parse(localStorage.getItem("fm")||"{}")}catch(e){}
+function save(){try{localStorage.setItem("fm",JSON.stringify(S))}catch(e){}}
+var $=function(i){return document.getElementById(i)},f=$("field"),box=$("s-ch");
+CH.forEach(function(c,i){
+ var p=document.createElement("button");p.className="plot";p.id="p"+i;p.textContent=i+1;p.title=c[0];
+ p.onclick=function(){switchTab("s-ch");var d=$("d"+i);d.open=true;d.scrollIntoView({block:"center"})};f.appendChild(p);
+ var d=document.createElement("details");d.id="d"+i;
+ var h='<summary><span class="mk">'+(i+1)+'</span>'+c[0]+'<small>'+c[1]+'</small></summary><div class="body">';
+ c[2].forEach(function(t,j){h+='<label class="t"><input type="checkbox" data-k="'+i+"-"+j+'"><span>'+t+'</span></label>'});
+ d.innerHTML=h+'<div class="tip">'+c[3]+'</div></div>';box.appendChild(d)});
+box.addEventListener("change",function(e){if(e.target.dataset.k){S[e.target.dataset.k]=e.target.checked;save();ref()}});
+function ref(){var n=0;CH.forEach(function(c,i){var k=0;c[2].forEach(function(t,j){var x=document.querySelector('[data-k="'+i+"-"+j+'"]');x.checked=!!S[i+"-"+j];if(x.checked)k++});
+ var all=k==c[2].length;if(all)n++;$("p"+i).className="plot"+(all?" done":k?" part":"");$("d"+i).className=all?"done":"";document.querySelector("#d"+i+" .mk").textContent=all?"\u2713":i+1});
+ $("pb").style.width=n/18*100+"%";$("ps").textContent=n+" of 18 chapters done"}
+$("reset").onclick=function(){if(confirm("Clear all ticked tasks?")){S={};save();ref()}};
+var T=[["s-ch","Chapters"],["s-route","Route"],["s-calc","Calculators"],["s-farm","Farming"]],nv=$("tabs");
+T.forEach(function(t){var b=document.createElement("button");b.className="tab";b.id="t-"+t[0];b.setAttribute("role","tab");b.textContent=t[1];b.onclick=function(){switchTab(t[0])};nv.appendChild(b)});
+function switchTab(id){T.forEach(function(t){$(t[0]).hidden=t[0]!=id;$("t-"+t[0]).setAttribute("aria-selected",t[0]==id)})}
+function calc(){var c=+$("f1").value||0,b=Math.min(100,+$("f2").value||0),fish=c*b/100,net=fish*5-c;
+ $("fo").innerHTML="Net energy: <span>"+(net>=0?"+":"")+net.toFixed(0)+"</span> ("+fish.toFixed(0)+" fish for "+c+" casts)";
+ var q=$("m1").value.split(","),s=+q[0],d=+q[1],n=Math.max(1,+$("m2").value||1);
+ $("mo").innerHTML="Doubles first: <span>"+(Math.floor(n/2)*d+(n%2)*s)+"</span> energy &middot; all singles: "+(n*s);
+ var g=Math.max(0,+$("g1").value||0);$("go").innerHTML="Still needed: <span>"+Math.max(0,20000-g).toLocaleString()+"</span> of 20,000 Gold (15,000 ch 11 + 5,000 ch 16)"}
+["f1","f2","m1","m2","g1"].forEach(function(i){$(i).oninput=calc});
+$("theme").onclick=function(){var r=document.documentElement,d=r.dataset.theme=="dark"||(!r.dataset.theme&&matchMedia("(prefers-color-scheme:dark)").matches);r.dataset.theme=d?"light":"dark"};
+ref();calc();switchTab("s-ch");
+</script></body></html>
